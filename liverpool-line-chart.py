@@ -2,13 +2,21 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def lineChart(labels, vals, player):
-    fig = plt.figure(figsize = (10, 5))
+    plt.figure(figsize = (10, 5))
 
-    plt.plot(labels, vals["goals"], marker="o", linestyle="-")
-    plt.plot(labels, vals["appearances"], marker="o", linestyle="-.") 
+    plt.plot(labels, vals["goals"], marker="o", linestyle="-", color=(1, 0, 0))
+    plt.plot(labels, vals["appearances"], marker="o", linestyle="-.", color=(0.5, 0, 0)) 
+
+    for index, value in enumerate(vals["goals"]):
+        plt.text(index, value + 1, str(value), color=(1, 0, 0))  
+
+    for index, value in enumerate(vals["appearances"]):
+        plt.text(index, value + 1, str(value), color=(0.5, 0, 0))  
+        
+    plt.ylim(0, max(vals["appearances"]) + 5)
 
     plt.xlabel("Seasons")
-    plt.ylabel("- goals . appearances")
+    plt.ylabel("____ goals ..... appearances")
     plt.title("Liverpool FC Player Stats for " + player)
     plt.show()
     
