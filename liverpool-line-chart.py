@@ -13,17 +13,17 @@ def lineChart(labels, vals, player):
     for index, value in enumerate(vals["appearances"]):
         plt.text(index, value + 1, str(value), color=(0.5, 0, 0))  
         
-    plt.ylim(0, max(vals["appearances"]) + 5)
+    plt.ylim(0, max(vals["appearances"]) + 10)
 
     plt.xlabel("Seasons")
-    plt.ylabel("____ goals ..... appearances")
+    plt.text(0, vals["goals"][0] + 3, "GOALS", color=(1, 0, 0))      
+    plt.text(0, vals["appearances"][0] + 3, "APPEARANCES", color=(0.5, 0, 0))  
     plt.title("Liverpool FC Player Stats for " + player)
     plt.show()
     
 def seasonName(year):
     return str(year) + "/" + str(year + 1)
   
-# creating the dataset
 data = {
     2017: {
         "Mohamed Salah": {"goals": 44, "appearances": 52},
@@ -93,7 +93,7 @@ while (ans != 0):
             print("Invalid option. Please try again.")    
 
     if (ans == 0): break
-    if (ans > len(players) + 1 or ans < 0): continue  
+    if (ans > len(players) or ans < 0): continue  
         
     player = players[ans - 1]
     stats = { "goals": [], "appearances": []}
