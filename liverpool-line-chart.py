@@ -16,8 +16,8 @@ def lineChart(labels, vals, player):
     plt.ylim(0, max(vals["appearances"]) + 10)
 
     plt.xlabel("Seasons")
-    plt.text(0, vals["goals"][0] + 3, "GOALS", color=(1, 0, 0))      
-    plt.text(0, vals["appearances"][0] + 3, "APPEARANCES", color=(0.5, 0, 0))  
+    plt.text(0, vals["goals"][0] + 5, "GOALS", color=(1, 0, 0))      
+    plt.text(0, vals["appearances"][0] + 5, "APPEARANCES", color=(0.5, 0, 0))  
     plt.title("Liverpool FC Player Stats for " + player)
     plt.show()
     
