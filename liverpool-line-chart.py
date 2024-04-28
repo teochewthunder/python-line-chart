@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 def lineChart(labels, vals, player):
     plt.figure(figsize = (10, 5))
 
-    plt.plot(labels, vals["goals"], marker="o", linestyle="-", color=(1, 0, 0))
-    plt.plot(labels, vals["appearances"], marker="o", linestyle="-.", color=(0.5, 0, 0)) 
+    plt.plot(labels, vals["goals"], marker="o", color=(1, 0, 0))
+    plt.plot(labels, vals["appearances"], marker="o", color=(0.5, 0, 0)) 
 
     for index, value in enumerate(vals["goals"]):
         plt.text(index, value + 1, str(value), color=(1, 0, 0))  
@@ -14,10 +14,12 @@ def lineChart(labels, vals, player):
         plt.text(index, value + 1, str(value), color=(0.5, 0, 0))  
         
     plt.ylim(0, max(vals["appearances"]) + 10)
+    plt.axhline(y=np.nanmean(vals["goals"]), linestyle="-.", color=(1, 0, 0))
+    plt.axhline(y=np.nanmean(vals["appearances"]), linestyle="-.", color=(0.5, 0, 0))
 
     plt.xlabel("Seasons")
-    plt.text(0, vals["goals"][0] + 5, "GOALS", color=(1, 0, 0))      
-    plt.text(0, vals["appearances"][0] + 5, "APPEARANCES", color=(0.5, 0, 0))  
+    plt.text(0, np.nanmean(vals["goals"]) + 5, "GOALS", color=(1, 0, 0))      
+    plt.text(0, np.nanmean(vals["appearances"])  + 5, "APPEARANCES", color=(0.5, 0, 0))  
     plt.title("Liverpool FC Player Stats for " + player)
     plt.show()
     
