@@ -4,22 +4,23 @@ import matplotlib.pyplot as plt
 def lineChart(labels, vals, player):
     plt.figure(figsize = (10, 5))
 
+    plt.ylim(0, max(vals["appearances"]) + 10)
     plt.plot(labels, vals["goals"], marker="o", color=(1, 0, 0))
     plt.plot(labels, vals["appearances"], marker="o", color=(0.5, 0, 0)) 
-
+    
     for index, value in enumerate(vals["goals"]):
         plt.text(index, value + 1, str(value), color=(1, 0, 0))  
 
     for index, value in enumerate(vals["appearances"]):
         plt.text(index, value + 1, str(value), color=(0.5, 0, 0))  
         
-    plt.ylim(0, max(vals["appearances"]) + 10)
     plt.axhline(y=np.nanmean(vals["goals"]), linestyle="-.", color=(1, 0, 0))
+    plt.text(0, np.nanmean(vals["goals"]) + 5, "GOALS", color=(1, 0, 0))
+    
     plt.axhline(y=np.nanmean(vals["appearances"]), linestyle="-.", color=(0.5, 0, 0))
-
+    plt.text(0, np.nanmean(vals["appearances"]) + 5, "APPEARANCES", color=(0.5, 0, 0))  
+    
     plt.xlabel("Seasons")
-    plt.text(0, np.nanmean(vals["goals"]) + 5, "GOALS", color=(1, 0, 0))      
-    plt.text(0, np.nanmean(vals["appearances"])  + 5, "APPEARANCES", color=(0.5, 0, 0))  
     plt.title("Liverpool FC Player Stats for " + player)
     plt.show()
     
@@ -97,6 +98,7 @@ while (ans != 0):
     if (ans == 0): break
     if (ans > len(players) or ans < 0): continue  
         
+        
     player = players[ans - 1]
     stats = { "goals": [], "appearances": []}
     
@@ -105,5 +107,5 @@ while (ans != 0):
             seasons.append(seasonName(season))
             stats["goals"].append(data[season][player]["goals"])
             stats["appearances"].append(data[season][player]["appearances"])
-
+            
     lineChart(seasons, stats, player)
