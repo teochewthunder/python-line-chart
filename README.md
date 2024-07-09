@@ -15,7 +15,7 @@ This builds on the earlier [Python Bar Chart](https://github.com/teochewthunder/
 
 ## Chart
 We use the `matplotlib` library to plot the line chart, and the `numpy` library to access aggregation functions.
-- An average line can be drawn using the `axhline()` method from `matplotlib`, using as an an argument a value derived from using the `nanmean()` method of `numpy`.
+- An average line can be drawn using the `axhline()` method from `matplotlib`, using as an argument a value derived from using the `nanmean()` method of `numpy`.
 - Goals and appearances are represented using different colors.
 - Averages are represented using dashed lines.
 - The labels for goals and appearances are placed above the average lines.
